@@ -305,6 +305,14 @@
       padding-top: 24px;
     }
 
+    .lesson-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
     .feedback {
       min-height: 44px;
       color: var(--muted);
@@ -813,6 +821,10 @@
         flex-direction: column;
       }
 
+      .lesson-actions {
+        justify-content: stretch;
+      }
+
       .duo-button {
         width: 100%;
       }
@@ -851,7 +863,7 @@
     <aside class="rail" aria-label="练习导航">
       <div class="logo" aria-hidden="true">W</div>
       <button class="rail-btn active" type="button">练习</button>
-      <button class="rail-btn" type="button" id="openLibraryRail">词库</button>
+      <button class="rail-btn" type="button" id="openLibraryRail">自定义词库</button>
       <button class="rail-btn" type="button" id="resetRail">重置</button>
     </aside>
 
@@ -878,6 +890,9 @@
 
         <div class="lesson-foot">
           <div class="feedback" id="feedback">选择一个中文和一个英文。</div>
+          <div class="lesson-actions">
+            <button class="duo-button secondary" type="button" id="openLibraryInline">添加单词</button>
+          </div>
         </div>
       </section>
 
@@ -894,7 +909,7 @@
         </div>
         <div class="weak-list" id="weakList"></div>
         <div class="panel-actions">
-          <button class="small-button" type="button" id="openLibrary">录入新单词</button>
+          <button class="small-button" type="button" id="openLibrary">自定义词库</button>
           <button class="small-button" type="button" id="modeBtn">模式：自适应</button>
           <button class="small-button" type="button" id="resetProgress">清空进度</button>
         </div>
@@ -921,8 +936,8 @@
     <div class="modal-card">
       <div class="modal-top">
         <div>
-          <h2 id="libraryTitle">词库</h2>
-          <p id="librarySummary">新增词会保存在当前浏览器里，下次打开仍然可练。</p>
+          <h2 id="libraryTitle">自定义词库</h2>
+          <p id="librarySummary">在这里添加自己的单词。新增词只保存在当前浏览器里，不会改掉别人网页上的词。</p>
         </div>
         <button class="icon-button" type="button" id="closeLibrary" aria-label="关闭">×</button>
       </div>
@@ -1857,6 +1872,7 @@
 
     document.getElementById("openLibrary").addEventListener("click", openLibrary);
     document.getElementById("openLibraryRail").addEventListener("click", openLibrary);
+    document.getElementById("openLibraryInline").addEventListener("click", openLibrary);
     document.getElementById("closeLibrary").addEventListener("click", closeLibrary);
     document.getElementById("modeBtn").addEventListener("click", toggleMode);
     document.getElementById("resetProgress").addEventListener("click", resetProgress);
